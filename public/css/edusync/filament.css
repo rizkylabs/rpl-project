@@ -1,0 +1,18 @@
+.fi-body { background: #eeefef; color: #181818; }
+.dark .fi-body, .fi-body.dark { background: #171717; color: #f4f4f4; }
+.fi-body .fi-topbar { background: rgba(255,255,255,.9); box-shadow: 0 8px 24px #0000000b; border: 1px solid #d5d5d5; border-radius: 16px; backdrop-filter: blur(16px); margin: 10px 16px; }
+.dark .fi-body .fi-topbar, .fi-body.dark .fi-topbar { background: rgba(39,39,39,.92); border-color: #474747; }
+.fi-body .fi-section { border-radius: 16px; box-shadow: none; }
+.fi-body .fi-btn, .fi-body .fi-input-wrp, .fi-body .fi-dropdown-panel, .fi-body .fi-dropdown-list-item { border-radius: 12px; }
+.es-fi-buttonbar { display: none; }
+@media (max-width: 1023px) {
+    .fi-body .fi-main { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+    .es-fi-buttonbar { position: fixed; z-index: 25; display: flex; gap: 6px; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); padding: 6px; background: rgba(255,255,255,.92); color: #181818; border: 1px solid #d5d5d5; border-radius: 16px; box-shadow: 0 8px 24px #0000000b; backdrop-filter: blur(16px); }
+    .dark .es-fi-buttonbar { background: rgba(39,39,39,.95); color: #f4f4f4; border-color: #474747; }
+    .es-fi-buttonbar :is(a,button) { display: flex; flex: 1; align-items: center; justify-content: center; flex-direction: column; gap: 4px; min-height: 54px; border-radius: 12px; font: inherit; font-size: 12px; font-weight: 650; text-decoration: none; color: inherit; cursor: pointer; }
+    .es-fi-buttonbar :is(a[aria-current],a:hover,button:hover) { background: #eaeaea; }
+    .dark .es-fi-buttonbar :is(a[aria-current],a:hover,button:hover) { background: #383838; }
+    .es-fi-buttonbar svg { width: 21px; height: 21px; stroke: currentColor; stroke-width: 1.7; stroke-linejoin: round; stroke-linecap: round; }
+    .es-fi-buttonbar :focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+}
+@media (prefers-reduced-motion: reduce) { .fi-body *, .fi-body *::before, .fi-body *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }

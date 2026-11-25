@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,8 +19,14 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [LoginController::class, 'dashboard'])
+    Route::get('/dashboard', DashboardController::class)
         ->name('dashboard');
+
+    Route::middleware('auth.session')->group(function () {
+        Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+        Route::patch('/profile', [ProfileController::class, 'update'])->middleware('throttle:10,1')->name('profile.update');
+        Route::put('/profile/password', [ProfileController::class, 'password'])->middleware('throttle:10,1')->name('profile.password');
+    });
 
     Route::post('/logout', [LoginController::class, 'logout'])
         ->name('logout');
@@ -29,8 +37,9 @@ foreach (['teacher', 'student', 'parent', 'school'] as $role) {
         'auth',
         'role:' . $role,
         'permission:access.' . $role,
-    ])->prefix($role)->name($role . '.')->group(function () use ($role) {
-        Route::view('/', $role . '.dashboard')
+    ])->prefix($role)->name($role . '.')->group(function () {
+        // Keep old portal URLs and names available for existing links.
+        Route::get('/', fn () => redirect()->route('dashboard'))
             ->name('dashboard');
     });
 }

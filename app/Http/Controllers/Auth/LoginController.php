@@ -22,6 +22,13 @@ class LoginController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email', 'max:255'],
             'password' => ['required', 'string', 'max:72'],
+        ], [
+            'email.required' => 'Alamat email wajib diisi.',
+            'email.email' => 'Masukkan alamat email yang valid.',
+            'email.max' => 'Alamat email maksimal 255 karakter.',
+            'password.required' => 'Kata sandi wajib diisi.',
+            'password.string' => 'Kata sandi tidak valid.',
+            'password.max' => 'Kata sandi maksimal 72 karakter.',
         ]);
 
         $key = Str::lower($credentials['email'])
@@ -41,7 +48,7 @@ class LoginController extends Controller
 
             return back()
                 ->withErrors([
-                    'email' => 'Email atau password tidak sesuai.',
+                    'email' => 'Email atau kata sandi tidak sesuai.',
                 ])
                 ->onlyInput('email');
         }
@@ -51,30 +58,6 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         return redirect()->route('dashboard');
-    }
-
-    public function dashboard(Request $request): RedirectResponse
-    {
-        $user = $request->user();
-
-        $portals = [
-            'admin' => 'filament.admin.pages.dashboard',
-            'teacher' => 'teacher.dashboard',
-            'student' => 'student.dashboard',
-            'parent' => 'parent.dashboard',
-            'school' => 'school.dashboard',
-        ];
-
-        foreach ($portals as $role => $route) {
-            if (
-                $user->hasRole($role)
-                && $user->can('access.' . $role)
-            ) {
-                return redirect()->route($route);
-            }
-        }
-
-        abort(403, 'Anda tidak memiliki akses ke portal.');
     }
 
     public function logout(Request $request): RedirectResponse
