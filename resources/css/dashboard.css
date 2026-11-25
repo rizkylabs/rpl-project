@@ -1,0 +1,29 @@
+.es-welcome { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding: clamp(38px, 6vw, 84px) 0 38px; border-bottom: 1px solid var(--es-line); }
+.es-welcome-copy { min-width: 0; }
+.es-welcome-copy .es-kicker { color: var(--es-muted); margin-bottom: 16px; }
+.es-welcome h1 { font-size: clamp(32px, 4.2vw, 64px); line-height: 1.12; letter-spacing: -.065em; font-weight: 500; overflow-wrap: anywhere; }
+.es-welcome h1 span { font-weight: 750; }
+.es-welcome-copy > p:last-child { color: var(--es-muted); margin-top: 20px; max-width: 580px; line-height: 1.7; }
+.es-welcome-date { flex: none; display: grid; justify-items: end; padding-left: 24px; border-left: 1px solid var(--es-line); }
+.es-welcome-date span { font-size: 13px; color: var(--es-muted); }
+.es-welcome-date strong { font-size: clamp(22px, 2.5vw, 34px); font-weight: 600; letter-spacing: -.055em; white-space: nowrap; }
+.es-dashboard-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 18px; margin-top: 28px; align-items: start; }
+
+.es-empty { padding: 44px 0 24px; max-width: 400px; }
+.es-empty h3 { font-size: 22px; font-weight: 600; letter-spacing: -.035em; }
+.es-empty p { color: var(--es-muted); margin-top: 10px; line-height: 1.75; font-size: 14px; }
+.es-account { scroll-margin-top: 116px; }
+.es-account dl { margin: 0; }
+.es-account dl > div { padding-block: 15px; border-bottom: 1px solid var(--es-line); }
+.es-account dl > div:last-child { border: 0; padding-bottom: 0; }
+.es-account dt { color: var(--es-muted); font-size: 12px; margin-bottom: 4px; }
+.es-account dd { margin: 0; font-weight: 650; overflow-wrap: anywhere; font-size: 14px; }
+
+@media (max-width: 1080px) { .es-dashboard-grid { grid-template-columns: 1fr; } .es-welcome { align-items: flex-start; flex-direction: column; } .es-welcome-date { border-left: 0; padding-left: 0; justify-items: start; } }
+
+@media (max-width: 760px) {
+    .es-welcome { padding: 30px 0; gap: 20px; }
+    .es-dashboard-grid { margin-top: 18px; }
+    .es-empty { padding: 28px 0 12px; }
+    .es-account { scroll-margin-top: 90px; }
+}

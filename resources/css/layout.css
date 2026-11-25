@@ -1,0 +1,11 @@
+.es-shell { max-width: 1440px; margin-inline: auto; padding: 20px clamp(20px, 4vw, 56px); }
+.es-portal-label { color: var(--es-muted); font-size: 13px; }
+
+.es-main { min-width: 0; padding: 8px 0 0; }
+
+.es-portal-footer { display: flex; justify-content: space-between; gap: 10px; color: var(--es-muted); font-size: 12px; padding: 28px 0 16px; }
+
+@media (max-width: 760px) {
+    .es-shell { display: block; padding: 12px; }
+    .es-main { padding: 20px 4px 0; }
+}

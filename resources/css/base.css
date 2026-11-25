@@ -1,0 +1,31 @@
+:root {
+    --es-bg: #eeefef; --es-panel: #fff; --es-glass: rgba(255,255,255,.82); --es-soft: #f4f4f4;
+    --es-text: #181818; --es-muted: #595959; --es-line: #d5d5d5; --es-strong: #202020;
+    --es-inverse: #fff; --es-brand-mark: #fff; --es-shadow: 0 12px 36px #0000000b, inset 0 1px 0 #ffffffbd;
+    --es-radius: 16px; --es-control: 12px;
+}
+:root[data-theme=dark] {
+    --es-bg: #171717; --es-panel: #222; --es-glass: rgba(39,39,39,.87); --es-soft: #2d2d2d;
+    --es-text: #f4f4f4; --es-muted: #b9b9b9; --es-line: #474747; --es-strong: #f0f0f0;
+    --es-inverse: #171717; --es-brand-mark: #171717; --es-shadow: 0 12px 36px #00000024, inset 0 1px 0 #ffffff0d;
+}
+.es-app { min-height: 100dvh; margin: 0; background: var(--es-bg); color: var(--es-text); font-family: 'Manrope', ui-sans-serif, system-ui, sans-serif; font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+.es-app *, .es-app *::before, .es-app *::after { box-sizing: border-box; }
+.es-app :where(a, button, input, select):focus-visible { outline: 2px solid var(--es-text); outline-offset: 3px; }
+.es-app :where(button, select) { cursor: pointer; }
+.es-app :where(button, a, select, input) { transition: background-color .18s ease, color .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.es-app :where(h1,h2,h3,p) { margin: 0; }
+.es-app [hidden] { display: none !important; }
+.es-sr, .es-skip:not(:focus) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.es-skip:focus { position: fixed; z-index: 100; top: 12px; left: 12px; padding: 12px 18px; background: var(--es-panel); border-radius: 12px; }
+.es-muted { color: var(--es-muted); }
+.es-kicker { font-size: 13px; font-weight: 700; letter-spacing: .035em; }
+.es-brand { display: inline-flex; align-items: center; gap: 11px; font-size: 23px; font-weight: 800; letter-spacing: -.055em; color: inherit; text-decoration: none; width: fit-content; min-height: 44px; }
+.es-brand svg { flex: none; }
+
+/* Keyboard focus must remain visible even when a reveal is reversing. */
+[data-reveal]:focus-within { opacity: 1 !important; transform: none !important; }
+
+@media (prefers-reduced-motion: reduce) { .es-app *, .es-app *::before, .es-app *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+
+.es-app :where(button, a):active { opacity: .78; }

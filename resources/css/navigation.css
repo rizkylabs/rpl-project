@@ -1,0 +1,48 @@
+.es-nav { display: flex; align-items: center; gap: 4px; }
+.es-nav a { display: flex; gap: 11px; align-items: center; padding: 11px 12px; border-radius: var(--es-control); font-weight: 650; font-size: 14px; text-decoration: none; color: var(--es-text); min-height: 46px; }
+.es-nav a[aria-current] { background: var(--es-soft); box-shadow: inset 0 0 0 1px var(--es-line); }
+.es-nav svg { width: 19px; height: 19px; flex: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+
+.es-nav a:hover { background: var(--es-soft); }
+
+.es-navbar { position: sticky; top: 16px; z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 16px; background: var(--es-glass); border: 1px solid var(--es-line); border-radius: 16px; box-shadow: var(--es-shadow); backdrop-filter: blur(18px); }
+.es-navbar-brand, .es-navbar-tools { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.es-navbar-brand .es-portal-label { padding-left: 12px; border-left: 1px solid var(--es-line); white-space: nowrap; }
+.es-navbar-tools { justify-content: flex-end; }
+.es-nav a { white-space: nowrap; }
+.es-dropdown { position: relative; min-width: 0; }
+.es-dropdown-trigger { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 5px 10px; border: 1px solid var(--es-line); border-radius: 12px; background: var(--es-panel); color: var(--es-text); cursor: pointer; list-style: none; font-size: 13px; font-weight: 650; }
+.es-dropdown-trigger::-webkit-details-marker { display: none; }
+.es-dropdown-trigger:focus-visible { outline: 2px solid var(--es-text); outline-offset: 3px; }
+.es-dropdown-trigger svg { width: 18px; height: 18px; flex: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.es-dropdown-trigger .es-chevron { width: 15px; transition: transform .18s ease; }
+.es-dropdown[open] .es-chevron { transform: rotate(180deg); }
+.es-dropdown-panel { position: absolute; z-index: 40; inset-inline-end: 0; top: calc(100% + 8px); min-width: 190px; width: max-content; max-width: min(300px, calc(100vw - 32px)); padding: 6px; background: var(--es-panel); border: 1px solid var(--es-line); border-radius: 12px; box-shadow: var(--es-shadow); }
+.es-dropdown-start .es-dropdown-panel { inset-inline-start: 0; inset-inline-end: auto; }
+.es-dropdown[open] .es-dropdown-panel { animation: es-dropdown-in .16s ease-out; }
+@keyframes es-dropdown-in { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+.es-dropdown-panel :where(button,a) { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 44px; padding: 8px 12px; border-radius: 8px; text-align: left; font-size: 13px; color: var(--es-text); text-decoration: none; }
+.es-dropdown-panel :where(button,a):hover, .es-dropdown-panel button[aria-pressed=true] { background: var(--es-soft); }
+.es-dropdown-caption, .es-dropdown-user { padding: 9px 12px; color: var(--es-muted); font-size: 12px; }
+.es-dropdown-user { display: grid; gap: 4px; border-bottom: 1px solid var(--es-line); overflow-wrap: anywhere; }
+.es-dropdown-user strong { color: var(--es-text); font-size: 14px; }
+.es-choice-check { visibility: hidden; }
+[aria-pressed=true] .es-choice-check { visibility: visible; }
+.es-profile-name { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.es-profile .es-avatar { width: 30px; height: 30px; border-radius: 9px; }
+
+.es-buttonbar { display: none; }
+@media(max-width: 960px) { .es-navbar-brand .es-portal-label, .es-profile-name { display: none; } }
+
+@media(max-width: 760px) {
+    .es-shell { padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)); }
+    .es-navbar { top: 8px; gap: 8px; padding: 8px 10px; }
+    .es-navbar .es-brand { font-size: 20px; }
+    .es-navbar-tools { gap: 6px; }
+    .es-navbar .es-theme [data-theme-label] { display: none; }
+    .es-navbar .es-theme .es-dropdown-panel { inset-inline-end: -55px; }
+    .es-nav-desktop { display: none; }
+    .es-buttonbar { display: flex; position: fixed; z-index: 35; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom, 0px)); padding: 6px; gap: 6px; background: var(--es-glass); border: 1px solid var(--es-line); border-radius: 16px; box-shadow: var(--es-shadow); backdrop-filter: blur(18px); }
+    .es-buttonbar a { flex: 1; justify-content: center; flex-direction: column; gap: 4px; padding: 7px 8px; min-height: 54px; font-size: 11px; }
+    .es-buttonbar a svg { width: 21px; height: 21px; }
+}
